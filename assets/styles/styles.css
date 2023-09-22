@@ -1,0 +1,211 @@
+/*general rules*/
+/*add in HTML: <meta name="viewport" content="width=device-width, initial-scale=1">*/
+/*enable alternative box-model via values for box-sizing (padding and border are included in the visible box)*/
+html {
+    box-sizing: border-box;
+    font-family: Consolas, monaco, monospace;
+}
+
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+
+h1 {
+    line-height: 1.6;
+    font-weight: lighter;
+    margin: 0;
+    /*font-size: 2.5em;*/
+}
+
+
+/*body rules*/
+body {
+    font-size: calc(1em + 0.25vw);
+    line-height: 1.5;
+    margin: 0; 
+    background-color: #5B7C99;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1em;
+    gap: 1em;
+}
+
+main {
+    background-color: #333333;
+    color: #F4FdFF;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: solid #FFCDA2;
+    border-width: 3px 3px 0 3px;
+    margin-top: 3em;
+    margin-left: 1em;
+    min-height: 100vh;
+    grid-column: 1 / 5;
+    grid-row: 1 / 4;
+}
+
+header > nav {
+    background-color: #333333;
+    text-align: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: solid #FFCDA2;
+    border-width: 0 3px 3px 3px;
+    margin-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+footer > nav {
+    background-color: #333333;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: solid #FFCDA2;
+    border-width: 3px 3px 0 3px;
+    margin-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+
+}
+
+main header {
+    margin: 3em;
+}
+
+body > header {
+    grid-column: 5 / 6;
+    grid-row: 1;
+    position: sticky;
+    top: 0;
+}
+
+aside {
+    grid-column: 5 / 6;
+    grid-row: 2;
+    background-color: #333333;
+    color: #F4FdFF;
+    border-radius: 20px;
+    border: solid #FFCDA2 3px;
+    margin-right: 1em;
+}
+
+footer {
+    grid-column: 5 / 6;
+    grid-row: 3;
+    align-self: end;
+}
+
+/*images are never larger than their container*/
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+ul {
+    list-style-position: inside;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 1em;
+}
+
+p {
+    margin: 0;
+}
+
+.peach {
+    color: #FFCDA2;
+}
+
+/*table rules*/
+/*table-layout: fixed -> table behaves more predictably, columns follow width of their headings
+border-collapse: collapse -> borders collapse into one*/
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    line-height: 1;
+    font-size: calc(0.75em + 0.25vw);
+    overflow-wrap: break-word;
+    padding: 0.25em 0.5em 0.5em 0.5em;
+}
+
+    /*enable horizontal scrolling for tables
+    .fig-table {
+        max-width: 100%; 
+        overflow-x: scroll;
+    }*/
+
+/*style links in this order: a:link, a:visited, a:focus, a:hover, a:active
+links should at least be: underlined (other elements shouldn't, react when they are hovered/focused
+and in a different way when activated*/
+
+a {
+    background-color: #AEC6D0;
+    border: solid #FFCDA2 3px;
+    border-radius: 5px/5px;
+    padding: 0.25em;
+    display: inline-block;
+    min-width: 65%;
+}
+
+a:link {
+    color: #333333;
+}
+
+a:visited {
+    color: #311F35;
+}
+
+a:active {
+    color: #AD0000;
+}
+
+/*form rules*/
+button, input, select, textarea, label {
+    font-family: inherit;
+    font-size: 100%;
+    display: block; 
+}
+
+button, input, select, textarea {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /*width + height*/
+}
+
+/* add usability/accessibility via input:focus, textarea:focus {styles}*/
+
+textarea {
+    overflow: auto;
+}
+
+/*appearance-property: control what system-level-styling is applied*/
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+     scroll-behavior: auto;
+    }
+    
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
